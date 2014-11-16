@@ -1,0 +1,23 @@
+{
+  "name": "SteamGameViewer",
+  "version": "1.0.0",
+  "description": "SteamGameViewer ===============",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.10.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alantliang/SteamGameViewer.git"
+  },
+  "author": "Alan Liang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alantliang/SteamGameViewer/issues"
+  },
+  "homepage": "https://github.com/alantliang/SteamGameViewer"
+}
