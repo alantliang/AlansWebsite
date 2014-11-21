@@ -11,6 +11,10 @@ app.get('/', function(req, res) {
 	// res.render("public/views/index.html");
 });
 
+app.get('/steamgames', function(req, res) {
+	res.sendFile(path.join(__dirname, "/public/views/steamgames.html"));
+});
+
 
 app.get('/rankedstats', function(req, res) {
 	req.pipe(request.get(
@@ -19,7 +23,9 @@ app.get('/rankedstats', function(req, res) {
 		.pipe(res);
 });
 
-app.get('/steamgames', function(req, res) {
+
+
+app.get('/steamgamesdata', function(req, res) {
 	console.log("making steamgames request");
 	var theData = "";
 	req.pipe(
