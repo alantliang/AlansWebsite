@@ -36,9 +36,8 @@ app.get('/steamgamesdata', function(req, res) {
 			response.on('data', function(data) {
 				theData += data;
 			}).on('end', function() {
-				res.json({
-					data: JSON.parse(theData)
-				});
+				console.log(JSON.parse(theData));
+				res.json(JSON.parse(theData));
 			});
 		})
 	);
