@@ -23,7 +23,13 @@ app.get('/rankedstats', function(req, res) {
 		.pipe(res);
 });
 
-
+// not official documentation, so can change. Used to support multiple ids, now only one
+//"http://store.steampowered.com/api/appdetails?appids=241930"
+app.get("/gamestats/:appid", function(req, res) {
+	var appid = req.params.appid;
+	console.log(appid);
+	request.get("http://store.steampowered.com/api/appdetails?appids=" + appid).pipe(res);
+});
 
 app.get('/steamgamesdata', function(req, res) {
 	console.log("making steamgames request");
@@ -36,7 +42,6 @@ app.get('/steamgamesdata', function(req, res) {
 			response.on('data', function(data) {
 				theData += data;
 			}).on('end', function() {
-				console.log(JSON.parse(theData));
 				res.json(JSON.parse(theData));
 			});
 		})

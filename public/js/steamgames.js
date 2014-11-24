@@ -5,17 +5,26 @@ $(document).ready(function() {
 		dataType: 'json',
 		// was another word besides complete...maybe data?
 		success: function(data) {
-			steamgames = data.response.games;
-			gamesPlayed = [];
+			var steamgames = data.response.games,
+				gamesPlayed = [],
+				totalTime = 0;
 			for (var i = 0; i < steamgames.length; i++) {
 				if (parseInt(steamgames[i].playtime_forever) > 0) {
-					gamesPlayed.push({name: steamgames[i].name, playtime: parseInt(steamgames[i].playtime_forever)});
+					console.log(steamgames[i]);
+					gamesPlayed.push({
+						name: steamgames[i].name,
+						playtime: parseInt(steamgames[i].playtime_forever)
+					});
 				}
 			}
-			gamesPlayed = gamesPlayed.sort(function(a, b) {return b.playtime - a.playtime}); //reverse descending
-			for (var i = 0; i < gamesPlayed.length; i ++) {
-				console.log(gamesPlayed[i]);
-			}
+			gamesPlayed = gamesPlayed.sort(function(a, b) {
+				return b.playtime - a.playtime
+			}); //reverse descending
+			// for (var i = 0; i < gamesPlayed.length; i++) {
+			// 	console.log(gamesPlayed[i]);
+			// 	totalTime += gamesPlayed[i].playtime;
+			// }
+			console.log("Total time: " + totalTime/60);
 		},
 		error: function(data) {
 			alert("we had an error")
