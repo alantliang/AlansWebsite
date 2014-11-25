@@ -1,5 +1,15 @@
 $(document).ready(function() {
 	//http://api.jquery.com/jquery.ajax/
+	getSteamGamesData(function(gamesPlayed) {
+		var source = $("#games-template").html();
+		var template = Handlebars.compile(source);
+		var data = {games: gamesPlayed};
+		$("#gamesgohere").append(template(data));
+		// html(JSON.stringify(gamesPlayed));
+	});
+});
+
+function getSteamGamesData(next) {
 	$.ajax({
 		url: '/steamgamesdata',
 		dataType: 'json',
@@ -10,7 +20,7 @@ $(document).ready(function() {
 				totalTime = 0;
 			for (var i = 0; i < steamgames.length; i++) {
 				if (parseInt(steamgames[i].playtime_forever) > 0) {
-					console.log(steamgames[i]);
+					// console.log(steamgames[i]);
 					gamesPlayed.push({
 						name: steamgames[i].name,
 						playtime: parseInt(steamgames[i].playtime_forever)
@@ -20,17 +30,18 @@ $(document).ready(function() {
 			gamesPlayed = gamesPlayed.sort(function(a, b) {
 				return b.playtime - a.playtime
 			}); //reverse descending
-			// for (var i = 0; i < gamesPlayed.length; i++) {
-			// 	console.log(gamesPlayed[i]);
-			// 	totalTime += gamesPlayed[i].playtime;
-			// }
+			for (var i = 0; i < gamesPlayed.length; i++) {
+				// console.log(gamesPlayed[i]);
+				totalTime += gamesPlayed[i].playtime;
+			}
 			console.log("Total time: " + totalTime/60);
+			next(gamesPlayed);
 		},
 		error: function(data) {
 			alert("we had an error")
 		}
 	});
-});
+}
 
 // we need to format data to the way d3 wants it
 function formatData(steamdata) {

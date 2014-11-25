@@ -3,6 +3,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script src="/js/steamgames.js"></script>
 <script src="http://d3js.org/d3.v3.js" charset="utf-8"></script>
+<script src="/libs/handlebars-v2.0.0.js"></script>
 </header>
 
 <body>
@@ -11,3 +12,9 @@ This is my steam games.
 <div id="gamesgohere"></div>
 </body>
 </html>
+
+<script id="games-template" type="text/x-handlebars-template">
+  {{#each games}}
+  {{name}},{{playtime}}<br>
+  {{/each}}
+</script>

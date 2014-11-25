@@ -4,6 +4,7 @@
   "description": "SteamGameViewer ===============",
   "main": "server.js",
   "dependencies": {
+    "bootstrap": "^3.3.1",
     "express": "^4.10.2",
     "passport-local": "^1.0.0",
     "request": "^2.48.0"
