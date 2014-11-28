@@ -8,4 +8,4 @@ Use d3.js library to view steam games played.
 
 Progress Pics
 ---------------
-Get pics from dropbox and stats from gdrive and create graphs/slideshow.
+Get pics from dropbox and stats from gdrive and create graphs/slideshow. Login to use this portion of the website?
