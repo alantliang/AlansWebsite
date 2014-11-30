@@ -15,6 +15,9 @@ app.get('/steamgames', function(req, res) {
 	res.sendFile(path.join(__dirname, "/public/views/steamgames.html"));
 });
 
+app.get('/progressPics', function(req, res) {
+	res.sendFile(path.join(__dirname, "/public/views/progress.html"));	
+});
 
 app.get('/rankedstats', function(req, res) {
 	req.pipe(request.get(
