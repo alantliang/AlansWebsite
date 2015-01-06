@@ -1,11 +1,12 @@
 $(document).ready(function() {
 	//http://api.jquery.com/jquery.ajax/
-	getSteamGamesData(function(gamesPlayed) {
+	getSteamGamesData(function(games) {
 		var source = $("#games-template").html();
 		var template = Handlebars.compile(source);
-		var data = {games: gamesPlayed};
+		console.log(games);
+		var data = {games: games};
 		$("#gamesgohere").append(template(data));
-		// html(JSON.stringify(gamesPlayed));
+		// html(JSON.stringify(games));
 	});
 });
 
